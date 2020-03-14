@@ -17,9 +17,11 @@ class FolderList extends Component{
 	}
 
 	render(){
-		return <ul>
+		return <ul style={{ marginLeft: this.props.depth * 20 }}>
 				<li>
-					{this.props.data.subFolder && <span onClick={this.toggleExpand} dangerouslySetInnerHTML={{__html: this.state.expand ? '&#x27F0;' : '&#x27F1;' }}/>}
+					<span onClick={this.toggleExpand}>
+	{ this.props.data.subFolder ? <i className="fa fa-folder" /> : <i className="fa fa-file" /> }
+						</span>
 					{this.props.data.name}
 				</li>
 				{this.props.data.subFolder && this.state.expand && this.props.data.subFolder.length > 0 && this.props.data.subFolder.map(
